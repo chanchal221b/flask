@@ -36,6 +36,8 @@ def run():
             file.write(str(url)+"       ")
             file.write(li[i]+ "\n")
         file.close()
+        audio = request.form['files']
+        file.write(audio)
         if request.form.get('hamming_yes'):
             var1 = 1
         if request.form.get('hamming_no'):
