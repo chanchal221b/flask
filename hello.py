@@ -1,5 +1,5 @@
 def hello_world():
-    file = open("/home/chanchal/gui/dummy_file.txt","w+")
+    file = open("/home/chanchal/gui/flask/dummy_file.txt","w+")
     print("dummy file prepared")
     file.close()
 

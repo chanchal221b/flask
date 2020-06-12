@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect
 import os
 
+
 var1=0 #hamming_yes
 var2=0 #hamming_no
 var3=0 #Google_API
@@ -11,6 +12,7 @@ var7=0 #folder_1
 var8=0 #folder_2
 
 app = Flask(__name__)
+app.config["AUDIO_UPLOADS"] = "/home/chanchal/gui/flask/static/uploads"
 
 @app.route('/')
 def hello():
@@ -19,23 +21,27 @@ def hello():
 @app.route('/reg',methods=['GET','POST'])
 def run():
     if request.method=='POST':
-        os.system("python3 /home/chanchal/gui/hello.py")
-        file = open("/home/chanchal/gui/email.txt","w+")
+        os.system("python /home/chanchal/gui/flask/hello.py")
+        file = open("/home/chanchal/gui/flask/email.txt","w+")
         email = request.form['email']
         #print(email)
         file.write(str(email)+"\n")
         file.close()
         url = request.form['url']
-        file = open("/home/chanchal/gui/email.txt","a")
+        file = open("/home/chanchal/gui/flask/email.txt","a")
         file.write(str(url))
         file.close()
         words = request.form['words']
         li = list(words.split(" ")) 
-        file = open("/home/chanchal/gui/email.txt","a")
+        file = open("/home/chanchal/gui/flask/email.txt","a")
         for i in range (len(li)):
             file.write(str(url)+"       ")
             file.write(li[i]+ "\n")
         file.close()
+
+        for f in request.files.getlist('audio[]'):
+           f.save(os.path.join(app.config["AUDIO_UPLOADS"],f.filename))
+            
         if request.form.get('hamming_yes'):
             var1 = 1
         if request.form.get('hamming_no'):

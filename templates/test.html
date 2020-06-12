@@ -14,14 +14,14 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-steel fixed-top"></nav>
         </header>
         <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <form action="http://127.0.0.1:5000/reg" method="POST">
+        <div class="row-5">
+            <div class="col">
+                <form action="http://127.0.0.1:5000/reg" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group overflow">
                         <label>URL</label>
                         <input type="text" class="form-control"name="url" placeholder="Enter a valid link" required>
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Audio file input</label>
-                        <input type="file" name="files" class="form-control-file" id="exampleFormControlFile1" multiple>
+                        <input type="file" name="audio[]" class="form-control-file" id="exampleFormControlFile1" multiple>
                     </div>
                     <div class="form-group">
                         <label>Hamming mode</label>
